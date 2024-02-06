@@ -51,12 +51,12 @@ import pandas as pd
 
 
 
-# file=r"C:\Users\abhisheksu\Downloads\data.csv"
-# sa= pd.read_csv(file)
-# pd.options.display.max_rows = 2
-# print(sa)
-# print(sa.to_string())
-# print(sa)
+file=r"C:\Users\abhisheksu\Downloads\data.csv"
+sa= pd.read_csv(file)
+pd.options.display.max_rows = 2
+print(sa)
+print(sa.to_string())
+print(sa)
 
 
 
