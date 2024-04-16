@@ -101,8 +101,8 @@ import numpy as np
 
 
 
-arra = np.array([[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20]])
-print(arra)
+# arra = np.array([[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20]])
+# print(arra)
 
 
 # def trans(array):
@@ -126,5 +126,25 @@ print(arra)
 
 # data = np.delete(arra, 0, axis=0) # delete the row and column in the 2d array
 # print(data)
+
+
+
+# bouble sort array
+
+# my_array = [64,76,46,54,34,23]
+# n= len(my_array)
+# for i in range(n-1):
+#     for j in range(n-i-1):
+#         if my_array[j]>my_array[j+1]:
+#             my_array[j],my_array[j+1] = my_array[j+1],my_array[j]
+# print(my_array)
+
+
+
+
+
+
+
+
 
 

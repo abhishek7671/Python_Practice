@@ -9,12 +9,12 @@ import pandas as pd
 # print(myvar)
 
 
-# a=[1,4,6,7,3,2,0]
-# b=pd.Series(a)
-# print(b)
+a=[1,4,6,7,3,2,0]
+b=pd.Series(a)
+print(b)
 
-# c=pd.Series(a,index=['a','b','c','d','e','f','g'])
-# print(c)
+c=pd.Series(a,index=['a','b','c','d','e','f','g'])
+print(c)
 
 
 # calories = {"day1":400,"day2":230,"day3":450}
@@ -51,12 +51,12 @@ import pandas as pd
 
 
 
-file=r"C:\Users\abhisheksu\Downloads\data.csv"
-sa= pd.read_csv(file)
-pd.options.display.max_rows = 2
-print(sa)
-print(sa.to_string())
-print(sa)
+# file=r"C:\Users\abhisheksu\Downloads\data.csv"
+# sa= pd.read_csv(file)
+# pd.options.display.max_rows = 2
+# print(sa)
+# print(sa.to_string())
+# print(sa)
 
 
 
@@ -120,11 +120,11 @@ print(sa)
 
 
 
-file=r"C:\Users\abhisheksu\Downloads\data.csv"
-sa= pd.read_csv(file)
-sa['Calories'] = pd.DataFrame(sa['Calories'])
-sa.dropna(subset=["Calories"], inplace = True)
-print(sa.to_string())
+# file=r"C:\Users\abhisheksu\Downloads\data.csv"
+# sa= pd.read_csv(file)
+# sa['Calories'] = pd.DataFrame(sa['Calories'])
+# sa.dropna(subset=["Calories"], inplace = True)
+# print(sa.to_string())
 
 
 
