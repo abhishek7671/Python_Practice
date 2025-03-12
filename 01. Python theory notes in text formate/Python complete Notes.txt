@@ -1,0 +1,535 @@
+Python complete Notes
+
+
+Variables:
+variables are used to store data that can be referenced and manipulated during program execution.
+Variable names can only contain letters, digits and underscores (_)
+
+
+Key Differences
+Operator		Checks						Example Output
+==		Value equality					[1, 2, 3] == [1, 2, 3] → True
+is		Identity (memory location)		[1, 2, 3] is [1, 2, 3] → False
+
+
+
+Shallow Copy: Creates a new object and takes reference to the original nested object. If we update or add any data in original object variable it automatically shows in the shallow copy object.
+
+Deep Copy: Creates a new object and recursively copies all nested objects If we update or add any data in original object variable it not shows in the deep copy object.
+
+
+
+Decorator:
+
+decorator is a function that modifies the behavior of another function without changing its original code.
+
+
+Generator:
+
+A generator is a special type of function that returns an iterator object. Instead of using return to send back a single value, using yield to produce a series of results over time.
+
+
+
+map : 
+The map() function applies a given function to each item in an iterable (like a list) and returns an iterator containing the results.
+
+
+Filter:
+
+filter() only keeps the items that match the condition given in the function. All other items are ignored.
+
+
+reduce:
+
+reduce() takes all the values and reduces them to a single result using a function based on the condition.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 
+Python Memory Manager:
+
+Python has an automatic memory manager responsible for allocating memory for objects and reclaiming unused memory (garbage collection).
+
+	It handles low-level details like:
+		Allocating memory for new objects.
+		Releasing memory for objects no longer used.
+
+Python uses private heap space to store all objects and data structures. This is managed by the Python memory manager, not the OS directly.
+
+
+Stack Memory (Local Memory):
+
+Stores: Function calls, local variables, control flow (where you are in code)
+Memory is automatically allocated and deallocated when a function is called and returns.
+Fast Access (LIFO - Last In First Out)
+
+
+Heap Memory (Dynamic Memory):
+
+Stores: All objects (list, dict, class instances, etc.)
+Allocated at runtime.
+Memory is managed manually or by garbage collector.
+Slower than stack (but flexible, larger).
+
+
+Garbage Collection:
+
+Garbage Collection is the process of automatically freeing memory occupied by objects no longer referenced by your program.
+
+Python’s GC mechanism:
+Python uses a Reference Counting and Cyclic Garbage Collection system.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+class:
+
+class is a blueprint for creating objects. attributes and methods that describe the behavior of the objects created from the class.
+
+
+Object:
+
+Object is an instance of a class.
+It is a real-world entity that is created using the blueprint provided by the class.
+
+
+Self:
+
+self is a reference to the current instance of the class.
+It is used inside class methods to access and modify the attributes and methods of the current object.
+
+
+__init__():
+
+__init__() is a special method (also known as a constructor) in Python classes.
+It is automatically called when a new object is created from a class.
+other special methods like __str__(), __repr__() or __del__()
+
+Class Variables
+
+These are the variables that are shared across all instances of a class. It is defined at the class level, outside any methods. All objects of the class share the same value
+
+Instance Variables
+
+Variables that are unique to each object of a class. These are defined within __init__ method or other instance methods. Each object maintains its own copy of instance variables, independent of other objects.
+
+class Dog:
+    # Class variable
+    species = "Canine"
+
+    def __init__(self, name, age):
+        # Instance variables
+        self.name = name
+        self.age = age
+
+# Create objects
+dog1 = Dog("Buddy", 3)
+dog2 = Dog("Charlie", 5)
+
+# Access class and instance variables
+print(dog1.species)  # (Class variable)
+print(dog1.name)     # (Instance variable)
+print(dog2.name)     # (Instance variable)
+
+# Modify instance variables
+dog1.name = "Max"
+print(dog1.name)     # (Updated instance variable)
+
+# Modify class variable
+Dog.species = "Feline"
+print(dog1.species)  # (Updated class variable)
+print(dog2.species) 
+
+
+
+
+Class Method vs Static Method:
+
+Both @classmethod and @staticmethod are decorators used to define methods inside a class that are not instance methods.
+
+
+Class Method (@classmethod)
+Takes cls as the first parameter.
+Can modify class-level attributes.
+
+
+Static Method (@staticmethod)
+Does not take self or cls as a parameter.
+Behaves like a normal function but inside a class.
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Polymorphism:
+
+polymorphism allows the same name to be used for different types of actions — the actual action depends on the object invoking it. 
+
+
+Type of Polymorphism
+
+
+1.Compile-time Polymorphism (Method Overloading):
+
+Same method name with different argument types/number
+Python does not directly support this (but can be simulated using default args)
+
+
+
+2.Run-time Polymorphism (Method Overriding): Inheritance class Polymorphism
+
+A method in a child class overrides a method of the same name in the parent class
+Fully supported in Python
+
+
+3.Operator Overloading:
+
+The same operator works differently based on operand type
++ can add numbers or concatenate strings
+
+
+4.Duck Typing:
+
+Duck Typing is a dynamic typing concept
+In a 
+or (methods and attributes it has), rather than its explicit type
+
+	or
+
+Duck Typing is a concept of polymorphism is determined by its behaviour of the object rather than its class.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Inheritance:
+
+Inheritance is a fundamental concept in object-oriented programming (OOP) that allows a class (called a child or derived class) to inherit attributes and methods from another class (called a parent or base class).
+
+Parent Class:
+
+This is the base class from which other classes inherit.
+It contains attributes and methods that the child class can reuse.
+
+Child Class:
+
+This is the derived class that inherits from the parent class.
+The syntax for inheritance is class ChildClass(ParentClass).
+The child class automatically gets all attributes and methods of the parent class unless overridden.
+
+
+
+Types of Python Inheritance
+
+Single Inheritance: A child class inherits from one parent class.
+
+Multiple Inheritance: A child class inherits from more than one parent class.
+
+Multilevel Inheritance: A class is derived from a class which is also derived from another class.
+
+Hierarchical Inheritance: Multiple classes inherit from a single parent class.
+
+Hybrid Inheritance: A combination of more than one type of inheritance.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Abstraction:
+
+Abstraction is the process of hiding the internal implementation details of a class and only showing the essential features or functionalities to the user.
+
+
+types of Abstraction:
+
+Abstract Class :
+		class that cannot be instantiated and contains abstract methods.
+
+Abstract Class is a class that cannot be instantiated directly. It serves as a blueprint for other classes. It often contains:
+
+Abstract methods (methods with no implementation — subclasses must define them).
+Concrete methods (methods with actual implementation — they can be inherited directly).
+
+
+
+Abstract Method :
+ 		method declared but not implemented in the parent class.
+
+abstract method is a method that is declared inside a class but does not contain any implementation (body).
+
+It only defines what the method should be called and what parameters it should take.
+It must be implemented by any class that inherits the parent class (the abstract class).
+
+
+Interface (ABC) :
+		contract that enforces method implementation in subclasses.
+
+Interface in Python is a special type of abstract class where:
+
+All methods are abstract methods.
+It defines a contract that every implementing class must follow.
+The interface itself contains no implementation—just method declarations.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Encapsulation:
+
+
+Encapsulation: wrapping of variables and methods into a single unit.
+
+Types of Encapsulation:
+
+Public Members: Can be accessed anywhere, both inside and outside the class.
+
+Protected Members: Indicated with a single underscore (_). Can be accessed within the class and subclasses but not recommended for direct access.
+
+Private Members: Indicated with double underscore (__). Cannot be accessed directly outside the class.
+
+Note: ACCESS THE PRIVATE Variables
+
+Encapsulation using Getters and Setters Use getter methods to access private variables. Use setter methods to modify private variables.
+
+
+
+
+
+
+
+
+
+Microservices:
+
+Microservices is an architectural style where a large application is broken down into smaller independent services. Each of these small services focuses on a specific function 
+
+
+Monolithic:
+
+Monolithic Architecture, the entire application is built as a single unit.
+Easy to develop initially.
+❌ Hard to maintain, scale, or update as the application grows.
+
+
+Multithreading:
+
+Multithreading is running multiple threads within a single process.
+✅ Threads share memory with each other.
+✅ Threads are lighter than processes.
+✅ Suitable for I/O-bound tasks (like reading files, making network requests).
+Asynchronous method is suitable for multithreading.
+
+real time example:
+
+Web scraping,File downloads, Database querying
+
+
+Multiprocessing:
+
+Multiprocessing is running multiple processes separately, where each process has its own memory space.
+✅ Processes are heavier than threads.
+✅ Suitable for CPU-bound tasks (like image processing, data crunching).
+Synchronous method is suitable for Multiprocessing.
+
+real time example:
+
+Image resizing, Machine Learning, Video encoding
+
+
+
+
+Feature							Multi-threading 🧵														Multi-processing 🔥
+Definition				Running multiple threads (smaller units) within a single process			Running multiple processes (each with its own memory space)
+Parallel Execution		❌ No true parallelism due to the Global Interpreter Lock (GIL)				✅ True parallel execution (each process runs independently)
+Best for?			I/O-bound tasks (e.g., file I/O, network requests, database queries)			CPU-bound tasks (e.g., image processing, data crunching, ML)
+Memory Usage					✅ Lower memory usage (threads share memory)							❌ Higher memory usage (each process has its own memory)
+Inter-process Communication (IPC)	✅ Easier (threads share memory)									❌ More complex (separate memory spaces)
+Overhead							✅ Lower (threads are lightweight)								❌ Higher (processes need more setup and context switching)
+Scaling Across Cores?				❌ No (GIL allows only one thread to run at a time)				✅ Yes (each process runs independently on different cores)
+Crash Impact					❌ One thread crash can affect entire process						✅ One process crash does not affect others
+
+
+
+ Global Interpreter Lock:
+
+ GIL is a lock that allows only one thread to execute Python bytecode at a time, even in multi-threaded programs.
+
+🔹 Why Does Python Have GIL?
+CPython’s memory management (Garbage Collection) is not thread-safe.
+GIL prevents race conditions and ensures that only one thread modifies memory at a time.
+It simplifies memory management but limits true parallel execution in multi-threading.
+
+
+Difference Between Synchronous and Asynchronous Execution
+
+Feature						Synchronous ⏳												Asynchronous ⚡
+Execution Type			Sequential Execution (one task at a time)						Concurrent Execution (tasks run independently)
+Blocking?			✅ Blocking (each task waits for the previous one to complete)		❌ Non-blocking (tasks don’t wait for others)
+Efficiency			❌ Slower (idle time during waiting)									✅ Faster (can do other tasks while waiting)
+Best For?			CPU-bound tasks (math calculations, data processing)				I/O-bound tasks (network requests, file I/O, database queries)
+Thread Usage		Uses one thread per task											Uses multiple threads or event loop
+Complexity			✅ Simple to write and debug											❌ More complex (callbacks, event loops)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Path Parameters (path param):
+
+Used to specify a resource in the URL
+Mandatory (usually required for the API to function)
+Placed inside the URL path
+Cannot contain special characters like ? or &
+Typically used for identifiers (IDs, usernames, categories, etc.)
+
+
+
+Query Parameters (query param):
+
+Used to filter or modify the request
+Optional (not always required)
+Placed after the ? in the URL
+Multiple parameters are separated by &
+Used for search, filters, sorting, pagination, etc.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+1. Basic Authentication
+Description:
+
+Basic Authentication is the simplest form of HTTP authentication, where the client sends the username and password to the server in the Authorization header as a base64-encoded string.
+Format: Authorization: Basic <base64-encoded-username:password>
+
+Usage:
+It is mostly used for testing purposes or in situations where simplicity is preferred.
+
+
+
+2. Form-Based Authentication (Session-based Authentication)
+Description:
+
+This is the most common form of authentication used in web applications. Users submit their username and password through an HTML form, and the server checks the credentials.
+After successful login, the server typically creates a session for the user and stores the session ID in a cookie.
+
+Usage:
+Suitable for most web applications (websites, dashboards).
+Sessions allow users to stay logged in across multiple requests without re-entering credentials.
+
+
+3. Token-Based Authentication (JWT - JSON Web Token)
+Description:
+
+Token-based authentication is commonly used for modern APIs, especially RESTful APIs. The server authenticates the user and issues a JSON Web Token (JWT), which is stored on the client-side (usually in localStorage or a cookie).
+The client sends this token with each request, typically in the Authorization header (as Bearer <token>).
+JWT contains claims (like user information and expiration time) that are signed by the server to ensure integrity.
+
+Usage:
+It is used in mobile apps, or microservices.
+
+
+
+4. OAuth 2.0 (Third-party Authentication)
+Description:
+
+OAuth 2.0 is a protocol that allows third-party applications to grant limited access to a user's resources without exposing their credentials.
+Users authenticate using their credentials from a trusted provider (like Google, Facebook, etc.), and an access token is returned to the client.
+
+Usage:
+Commonly used for single sign-on (SSO) systems or when integrating with external services like Google, Facebook, GitHub, etc.
+
+
+5. Multi-Factor Authentication (MFA)
+Description:
+
+Multi-Factor Authentication requires the user to provide two or more verification factors: something they know (password), something they have (a mobile phone, OTP), or something they are (biometrics).
+This can be combined with any of the previous methods.
+
+Usage:
+Essential for high-security applications (banking apps, sensitive personal data).
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+define the class meta in djago:
+
+class Meta does not define model fields but controls how the model behaves in the database and admin panel.
+It is optional but useful for enforcing constraints, improving performance, and maintaining clean database structures.
+
+
+Django Models:
+
+Django Models define the database schema (structure) using Python classes instead of SQL.
+
+
+Key Features of Django Models:
+Uses Python instead of SQL
+Supports automated migrations (makemigrations and migrate)
+Provides default CRUD operations via Django ORM
+
+
+What is Django ORM?
+Answer:
+Django ORM (Object-Relational Mapping) allows interaction with the database using Python instead of SQL.
+
+
+
+
+What is Django Middleware?
+Answer:
+Django middleware is a layer that sits between the request and response, processing them before reaching the view or after leaving it.
+
+
+
+python manage.py makemigrations 
+
+it will default create one migration folder in the structure 
+
+
+python manage.py migrate
+
+we need any change again we wil follow the same commands
+
+python manage.py makemigrations
+python manage.py migrate
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+How does Flask handle routing?
+Answer:
+Flask uses the @app.route() decorator to define URL routes.
+
+
+
+What is Jinja2 in Flask?
+Answer:
+Jinja2 is a templating engine used in Flask for rendering HTML with dynamic content.
+
+
+What are Flask Blueprints?
+Answer:
+Blueprints allow structuring large applications by grouping routes into modules.
+
+
+What is Flask-SQLAlchemy?
+Answer:
+Flask-SQLAlchemy is an ORM for Flask that helps interact with databases using Python.
+
+
+
+Steps to Migrate Models in Flask
+1. Install Required Packages
+
+pip install flask flask-sqlalchemy flask-migrate
+
+2. Set Up Flask Application and Database
+Create a file app.py and configure the database.
+
+3. Initialize Migration Directory
+Run the following command in the terminal to initialize the migration system:
+
+flask db init
+
+4. Generate Migration Script
+Whenever you add, modify, or delete models, run:
+
+flask db migrate -m "Initial migration"
+
+5. Apply Migrations to the Database
+Run the command below to apply the changes to the actual database:
+
+flask db upgrade
