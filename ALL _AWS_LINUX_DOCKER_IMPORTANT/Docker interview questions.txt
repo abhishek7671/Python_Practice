@@ -1,0 +1,203 @@
+Docker is a popular containerization technology widely used in DevOps practices. Here are some of the most commonly used Docker commands in DevOps:
+
+1. docker build: This command is used to build a Docker image from a Dockerfile, which contains instructions for creating an image. 
+	For example: docker build -t myapp:1.0 .
+
+2. docker run: Launches a Docker container from a Docker image. You can specify various options, like ports, volumes, and environment variables.		For example: docker run -d -p 80:8080 myapp:1.0
+
+3. docker ps: Lists running containers. Use docker ps -a to list all containers, including stopped ones.
+
+4. docker stop and docker start: These commands are used to stop and start containers, respectively. 
+	For example: docker stop <container_id> and docker start <container_id>.
+
+5. docker exec: Run a command in a running container. 
+	For example: docker exec -it <container_id> bash to access a shell inside a container.
+
+6. docker logs: View the logs of a container. 
+	For example: docker logs <container_id>.
+
+7. docker pull: Pull a Docker image from a container registry. 
+	For example: docker pull ubuntu:latest.
+
+8. docker push: Push a Docker image to a container registry. 
+	For example: docker push myregistry/myapp:1.0.
+
+9. docker rm: Remove one or more containers. 
+	For example: docker rm <container_id>.
+
+10. docker rmi: Remove one or more images. 
+	For example: docker rmi myapp:1.0.
+
+11. docker volume create and docker volume rm: Create and remove Docker volumes for data persistence.
+
+12. docker network create and docker network rm: Create and remove Docker networks for container communication.
+
+13. docker-compose: Docker Compose is a tool for defining and running multi-container Docker applications. Common commands include docker-compose up, docker-compose down, and docker-compose ps.
+
+14. docker inspect: Get detailed information about Docker objects, such as containers, images, volumes, and networks. 
+	For example: docker inspect <container_id>.
+
+15. docker-compose build: Build services defined in a docker-compose.yml file.
+
+16. docker-compose logs: View the logs of containers managed by Docker Compose.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+1. What is Docker?
+Answer:
+Docker is an open-source platform that enables developers to build, ship, and run applications in lightweight, portable containers. It simplifies application deployment by packaging dependencies, libraries, and configurations into a single container.
+
+Key Features:
+Portability: Works across different environments (local, test, production).
+Lightweight: Uses OS-level virtualization (unlike VMs).
+Scalability: Easily scales up/down using container orchestration (Kubernetes).
+Isolation: Runs in a separate environment without affecting the host.
+
+
+2. What are Docker Containers?
+Answer:
+Docker Containers are lightweight, portable, and isolated environments that package an application along with its dependencies and configurations.
+
+Key Features:
+Encapsulation: Containers encapsulate code and dependencies.
+Isolation: Runs as an independent process without affecting other containers.
+Portability: Can run on any system with Docker installed.
+Efficiency: Shares the host OS kernel (unlike VMs, which require a full OS).
+
+
+3. What is a Docker Image?
+Answer:
+A Docker Image is a blueprint for creating Docker containers. It is a read-only template containing:
+
+Application code
+Libraries & dependencies
+Configuration files
+Environment variables
+Key Commands:
+List images: docker images
+Pull image: docker pull <image_name>
+Remove image: docker rmi <image_id>
+
+
+4. Difference Between Docker Image and Docker Container
+
+Feature	Docker 					Image					Docker Container
+Definition				Blueprint/template for containers	Running instance of an image
+State					Static (read-only)			Dynamic (live, running)
+Persistence				Cannot be changed			Can have state changes
+Execution				Cannot run				Runs as a process
+
+
+5. What is a Dockerfile?
+Answer:
+A Dockerfile is a script with a set of instructions used to automate the creation of Docker images.
+
+Key Commands:
+Build an image: docker build -t myapp .
+Run a container: docker run -d -p 5000:5000 myapp
+
+
+6. What is Docker Compose?
+Answer:
+Docker Compose is a tool to define and run multi-container applications using a YAML file.
+
+Example docker-compose.yml:
+
+Key Commands:
+Start services: docker-compose up -d
+Stop services: docker-compose down
+View logs: docker-compose logs
+
+
+
+7. Difference Between Docker and Virtual Machines (VMs)
+
+Feature						Docker					Virtual Machines
+OS Virtualization			Uses host OS kernel			Each VM has its own OS
+Resource Consumption			Lightweight				Heavy
+Startup Time				Seconds					Minutes
+Portability				Highly portable				Less portable
+
+
+8. How to Create a Docker Volume and Bind Mount?
+Answer:
+Docker Volume: Managed by Docker and stored under /var/lib/docker/volumes/
+
+docker volume create my_volume
+docker run -d -v my_volume:/data ubuntu
+
+Bind Mount: Maps a host directory to a container directory
+
+docker run -d -v /host/path:/container/path ubuntu
+
+
+9. What is a Docker Registry?
+Answer:
+A Docker Registry stores Docker images. Popular registries include:
+
+Docker Hub (public)
+Amazon ECR
+Google Container Registry (GCR)
+Private Registry
+Key Commands:
+Login: docker login
+Push Image: docker push username/image:tag
+Pull Image: docker pull username/image:tag
+
+
+10. What is Docker Networking?
+Answer:
+Docker allows containers to communicate using networks.
+
+11. How to Debug a Docker Container?
+Answer:
+Check logs: docker logs <container_id>
+Enter running container: docker exec -it <container_id> /bin/bash
+Inspect configuration: docker inspect <container_id>
+
+
+14. How to Optimize Docker Images?
+Answer:
+Use alpine base images: FROM python:3.9-alpine
+Reduce layers by combining RUN commands.
+Remove unnecessary files using .dockerignore
+Use multi-stage builds.
+
+
+15. What is Kubernetes and How Does It Relate to Docker?
+Answer:
+Kubernetes (K8s) is a container orchestration tool for managing containerized applications.
+
+Key Features:
+Auto-scaling
+Load balancing
+Self-healing (restarts failed containers)
+Rolling updates & rollbacks
+
+
+16. What is Docker Swarm?
+Answer:
+Docker Swarm is Docker’s native clustering and orchestration tool.
+
+Commands:
+Initialize Swarm: docker swarm init
+Create Service: docker service create --replicas 3 -p 80:80 nginx
+List Nodes: docker node ls
+
+
+17. How to Secure a Docker Container?
+Answer:
+Use least privilege principle (--user flag).
+Scan images (docker scan <image>).
+Limit container resources (--memory, --cpu).
+Use non-root users.
+
+
+18. How to Remove Docker Images, Containers, and Volumes?
+
+docker rm -f <container_id>   # Remove container
+docker rmi <image_id>         # Remove image
+docker volume rm <volume_name> # Remove volume
+

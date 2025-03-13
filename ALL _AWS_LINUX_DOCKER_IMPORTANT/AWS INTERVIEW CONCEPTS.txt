@@ -1,0 +1,314 @@
+AWS INTERVIEW CONCEPTS
+
+1. AWS IAM (Identity and Access Management)
+
+IAM is used for managing permissions and access to AWS resources.
+
+
+
+Example: Creating an IAM User using Python
+
+import boto3
+
+iam = boto3.client('iam')
+
+response = iam.create_user(
+    UserName='new_user'
+)
+print(response)
+
+
+Example: Attaching a Policy to a User
+
+response = iam.attach_user_policy(
+    UserName='new_user',
+    PolicyArn='arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess'
+)
+
+
+Most Asked Interview Questions
+
+
+What is AWS IAM, and how does it work?
+
+IAM allows you to manage users, groups, roles, and policies to control access to AWS resources.
+
+
+What are IAM roles, and how do they differ from IAM users?
+
+IAM users have long-term credentials, whereas IAM roles provide temporary security credentials and are assumed by entities like AWS services.
+
+
+What is an IAM policy, and how do you write one?
+
+An IAM policy is a JSON document that defines permissions for users, groups, or roles.
+
+
+What are the different types of IAM policies?
+
+AWS Managed Policies, Customer Managed Policies, and Inline Policies.
+
+
+What are IAM permissions boundaries?
+
+They define the maximum permissions a user or role can have.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. AWS S3 (Simple Storage Service)
+
+S3 is used to store and retrieve any amount of data from anywhere.
+
+
+Example: Uploading a File to S3
+
+s3 = boto3.client('s3')
+
+s3.upload_file('local_file.txt', 'my-bucket', 's3_file.txt')
+
+
+Example: Downloading a File from S3
+
+s3.download_file('my-bucket', 's3_file.txt', 'downloaded_file.txt')
+
+
+Most Asked Interview Questions
+
+
+What is AWS S3, and what are its storage classes?
+
+S3 is an object storage service, and it provides storage classes like Standard, Intelligent-Tiering, Glacier, and Deep Archive.
+
+
+What is an S3 bucket, and how does it work?
+
+A bucket is a container for storing objects (files) in S3.
+
+
+What are S3 lifecycle policies?
+
+These policies automatically transition objects to different storage classes or delete them after a defined period.
+
+
+What is S3 versioning?
+
+It allows you to keep multiple versions of an object to recover from accidental deletion.
+
+
+How do you secure data in S3?
+
+By using bucket policies, IAM policies, encryption (SSE-S3, SSE-KMS), and access control lists (ACLs).
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. AWS EC2 (Elastic Compute Cloud)
+
+EC2 provides scalable compute capacity in the cloud.
+
+
+Example: Launching an EC2 Instance
+
+ec2 = boto3.client('ec2')
+
+response = ec2.run_instances(
+    ImageId='ami-12345678',  # Replace with actual AMI ID
+    MinCount=1,
+    MaxCount=1,
+    InstanceType='t2.micro',
+    KeyName='my-key-pair'
+)
+print(response)
+
+
+Example: Stopping an EC2 Instance
+
+ec2.stop_instances(InstanceIds=['i-1234567890abcdef0'])
+
+
+
+Most Asked Interview Questions
+
+
+What are the different EC2 instance types?
+
+General Purpose, Compute Optimized, Memory Optimized, Storage Optimized, GPU Instances.
+
+
+What is an AMI (Amazon Machine Image)?
+
+An AMI is a pre-configured template used to launch EC2 instances.
+
+
+What is EC2 Auto Scaling?
+
+It allows automatic scaling of EC2 instances based on demand.
+
+
+How do you secure an EC2 instance?
+
+Using Security Groups, IAM roles, Key Pairs, and enabling SSH access securely.
+
+
+What is the difference between a Security Group and an NACL?
+
+Security Groups operate at the instance level, while NACLs operate at the subnet level.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4. AWS Lambda
+
+AWS Lambda lets you run code without provisioning or managing servers. Lambda is serverless.
+
+Example: Creating a Lambda Function
+
+import boto3
+
+lambda_client = boto3.client('lambda')
+
+response = lambda_client.create_function(
+    FunctionName='myLambdaFunction',
+    Runtime='python3.8',
+    Role='arn:aws:iam::123456789012:role/execution_role',
+    Handler='lambda_function.lambda_handler',
+    Code={'ZipFile': open('lambda_function.zip', 'rb').read()},
+)
+print(response)
+
+
+Example: Invoking a Lambda Function
+
+response = lambda_client.invoke(
+    FunctionName='myLambdaFunction',
+    InvocationType='RequestResponse',
+    Payload='{"key": "value"}'
+)
+print(response['Payload'].read())
+
+
+
+Most Asked Interview Questions
+What is AWS Lambda, and how does it work?
+
+It is a serverless computing service that runs code in response to events.
+
+
+What are Lambda triggers?
+
+Events that invoke a Lambda function, such as S3 events, DynamoDB streams, or API Gateway requests.
+
+
+What are the limitations of AWS Lambda?
+
+15-minute timeout, 10GB memory limit, 6MB deployment package size (compressed).
+
+
+How do you secure an AWS Lambda function?
+
+Using IAM roles, VPC configurations, and environment variable encryption.
+
+
+What are cold starts in AWS Lambda?
+
+The initial delay when executing a function that hasn’t been used recently.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+5. API Gateway
+
+API Gateway allows you to create, deploy, and manage APIs.
+
+Example: Creating an API Gateway REST API
+
+apigateway = boto3.client('apigateway')
+
+response = apigateway.create_rest_api(
+    name='MyAPI',
+    description='My API Gateway using Boto3'
+)
+print(response)
+
+
+Example: Deploying an API Gateway
+
+response = apigateway.create_deployment(
+    restApiId='api_id',
+    stageName='prod'
+)
+
+
+
+Most Asked Interview Questions
+
+What is AWS API Gateway, and how does it work?
+
+It is a managed service for creating and managing APIs.
+
+
+What are the types of API Gateway?
+
+REST API, HTTP API, WebSocket API.
+
+
+What are API Gateway throttling and quotas?
+
+Throttling limits the number of requests per second, and quotas restrict the total requests over a period.
+
+
+How do you secure an API Gateway?
+
+Using IAM authentication, Cognito, API keys, and Lambda authorizers.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+6. AWS ECS (Elastic Container Service)
+
+ECS is a container orchestration service.
+
+
+Example: Creating an ECS Cluster
+
+ecs = boto3.client('ecs')
+
+response = ecs.create_cluster(
+    clusterName='my-cluster'
+)
+print(response)
+
+
+Example: Registering a Task Definition
+
+response = ecs.register_task_definition(
+    family='my-task',
+    containerDefinitions=[
+        {
+            'name': 'my-container',
+            'image': 'nginx',
+            'memory': 512,
+            'cpu': 256,
+            'essential': True
+        }
+    ]
+)
+
+
+
+Most Asked Interview Questions
+
+
+What is AWS ECS, and how does it work?
+
+It is a container orchestration service to manage Docker containers.
+
+
+What is the difference between ECS and EKS?
+
+ECS is AWS-managed, while EKS is Kubernetes-based.
+
+
+What are Fargate and EC2 launch types in ECS?
+
+Fargate is serverless, while EC2 provides more control over instances.

@@ -1,0 +1,19 @@
+1.npm install -g @angular/cli  -------  it is for install the angular cli in the system -g is stands for globally install                                                                                            					in the local system.
+
+2.  ng version                 -------  check the version of angular.
+
+3. ng new your-project-name    -------  Create the new project name in the angular.
+
+4. ng serve or npm start       -------  when u run the code the project will compulsory in the path of that directory it will run at that time.
+
+5.ng serve --port 5000         -------  change the default port number using these command.
+
+6. ng serve -o                 -------  default port number and it will open in the browser automatically.
+
+7. ng generate component data-display   ----- new component in the same project.
+
+
+
+
+
+

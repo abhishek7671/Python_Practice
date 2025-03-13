@@ -1,0 +1,891 @@
+initial start projectin reactjs 
+1. D:\Reactjs>npx create-next-app  ----- it is used to install the useful packages in the reactjs.
+2. Then it will ask these questions
+	Ok to proceed? (y) y
+√ What is your project named? ... firstcode  ----this is the project name 
+√ Would you like to use TypeScript? ... No
+√ Would you like to use ESLint? ... No
+√ Would you like to use Tailwind CSS? ... Yes
+√ Would you like to use `src/` directory? ... No
+√ Would you like to use App Router? (recommended) ... Yes
+√ Would you like to customize the default import alias (@/*)? ... No 
+
+3.After that provide the project path in the directory
+then open the vscode and implement the code.
+
+
+
+direct create the project  command is 
+
+npx create-react-app my-app-name is used  to create the react app 
+
+
+
+
+
+
+
+
+
+# def extract_candidate_name(filename):
+#     parts = filename.split('_data_')
+#     if len(parts) > 1:
+#         candidate_name_parts = parts[1].split('_')
+#         if candidate_name_parts:
+#             candidate_name = candidate_name_parts[0]
+#             return candidate_name
+
+#     candidate_name = os.path.splitext(filename)[0]
+#     return candidate_name
+
+
+
+# def get_skill_process(req_data):
+#     start = time.time()
+#     today = datetime.datetime.now()
+#     start_time = today.strftime("%m-%d-%Y %I:%M:%S %p")
+#     job_folder = 'file'
+#     jd_input = ''
+#     resume_folder = req_data["resume_folder"]
+
+#     enc_files = req_data['resfile']
+#     enc_file_names = resume_folder
+
+#     files = []
+#     org_input_file = []
+#     for i in range(0, len(enc_file_names)):
+#         dec_file = decrypt(enc_files[i], cf.SECRET_KEY)
+#         dec_file_data = base64.b64decode((dec_file.split('base64,')[-1]))
+#         if enc_file_names[i].startswith('~$'):
+#             pass
+#         else:
+#             org_input_file.append(enc_file_names[i])
+#             file = open(os.path.join(cf.Resumes_File_Path, enc_file_names[i]), 'wb')
+#             file.write(dec_file_data)
+#             file.close()
+#             files.append(file)
+
+#     mandatory_skills = ''
+#     secondary_skills = ''
+#     experience = ''
+#     resp, entry_time, exit_time = process_file(org_input_file, job_folder, jd_input, experience, mandatory_skills,
+#                                                secondary_skills)
+#     module_run_time = exit_time - entry_time
+#     overall_end_time = time.time() - start
+    
+#     if not resp.empty:
+#         resp['Total_exp_cal'] = ''
+#         resp['Total_Exp_With_Years_lst'] = ''
+#         for i in range(len(resp)):
+#             if type(resp['Total_Exp_With_Years'][i]) == "NA":
+#                 resp['Total_exp_cal'][i] = "NA"
+#             elif type(resp['Total_Exp_With_Years'][i]) == list:
+#                 resp['Total_exp_cal'][i] = resp['Total_Exp_With_Years'][i][0]
+#             else:
+#                 resp['Total_exp_cal'][i] = 'NA'
+
+#         filtered_results = []
+#         for result in resp.to_dict(orient='records'):
+#             filtered_result = {
+#                 "Candidate": result["Candidate"],
+#                 "Email": result["Email"],
+#                 "Exp_Years": result["Exp_Years"],
+#                 "Mobile": result["Mobile"],
+#                 "Total_exp_cal": result["Total_exp_cal"],
+#                 "Resume_skills": result["Resume_skills"]
+#             }
+#             filtered_results.append(filtered_result)
+
+#         for result_item in filtered_results:
+#             candidate_name = extract_candidate_name(result_item['Candidate'])
+#             result_item['Candidate'] = candidate_name
+
+#         return {
+#             'overall_run_time': overall_end_time,
+#             'result': filtered_results
+#         }
+
+    
+    
+    
+    
+    
+    
+    
+    # ----------------------------------------------------------------------------------------------------
+
+# def extract_candidate_name(filename):
+#     parts = filename.split('_data_')
+#     if len(parts) > 1:
+#         candidate_name_parts = parts[1].split('_')
+#         if candidate_name_parts:
+#             candidate_name = candidate_name_parts[0]
+#             return candidate_name
+#     candidate_name = os.path.splitext(filename)[0]
+#     return candidate_name
+
+# def get_skill_process(req_data):
+#     start = time.time()
+#     today = datetime.datetime.now()
+#     start_time = today.strftime("%m-%d-%Y %I:%M:%S %p")
+#     job_folder = 'file'
+#     jd_input = ''
+#     resume_folder = req_data["resume_folder"]
+
+#     enc_files = req_data['resfile']
+#     enc_file_names = resume_folder
+
+#     files = []
+#     org_input_file = []
+#     for i in range(0, len(enc_file_names)):
+#         dec_file = decrypt(enc_files[i], cf.SECRET_KEY)
+#         dec_file_data = base64.b64decode((dec_file.split('base64,')[-1]))
+#         if enc_file_names[i].startswith('~$'):
+#             pass
+#         else:
+#             org_input_file.append(enc_file_names[i])
+#             file = open(os.path.join(cf.Resumes_File_Path, enc_file_names[i]), 'wb')
+#             file.write(dec_file_data)
+#             file.close()
+#             files.append(file)
+
+#     mandatory_skills = ''
+#     secondary_skills = ''
+#     experience = ''
+#     resp, entry_time, exit_time = process_file(org_input_file, job_folder, jd_input, experience, mandatory_skills,
+#                                                secondary_skills)
+#     module_run_time = exit_time - entry_time
+#     overall_end_time = time.time() - start
+    
+#     if not resp.empty:
+#         resp['Total_exp_cal'] = ''
+#         resp['Total_Exp_With_Years_lst'] = ''
+#         for i in range(len(resp)):
+#             if type(resp['Total_Exp_With_Years'][i]) == "NA":
+#                 resp['Total_exp_cal'][i] = "NA"
+#             elif type(resp['Total_Exp_With_Years'][i]) == list:
+#                 resp['Total_exp_cal'][i] = resp['Total_Exp_With_Years'][i][0]
+#             else:
+#                 resp['Total_exp_cal'][i] = 'NA'
+
+#         filtered_results = []
+#         for result in resp.to_dict(orient='records'):
+#             filtered_result = {
+#                 "Candidate": result["Candidate"],
+#                 "Email": result["Email"],
+#                 "Exp_Years": result["Exp_Years"],
+#                 "Mobile": result["Mobile"],
+#                 "Total_exp_cal": result["Total_exp_cal"],
+#                 "Resume_skills": result["Resume_skills"]
+#             }
+#             filtered_results.append(filtered_result)
+
+#         for result_item in filtered_results:
+#             candidate_name = extract_candidate_name(result_item['Candidate'])
+#             result_item['Candidate'] = candidate_name
+#             result_item['name'] = candidate_name
+
+#         return {
+#             'overall_run_time': overall_end_time,
+#             'result': filtered_results
+#         }
+ 
+#   ------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+# def extract_candidate_name(candidate):
+#     candidate_name = candidate.split('_')[1]  # Splitting by underscore and taking the second part
+#     candidate_name = candidate_name.split('[')[0]  # Removing the part after '['
+#     return candidate_name.strip()
+
+# def get_skill_process(req_data):
+#     start = time.time()
+#     today = datetime.datetime.now()
+#     start_time = today.strftime("%m-%d-%Y %I:%M:%S %p")
+#     job_folder = 'file'
+#     jd_input = ''
+#     resume_folder = req_data["resume_folder"]
+ 
+#     enc_files = req_data['resfile']
+#     enc_file_names = resume_folder
+ 
+#     files = []
+#     org_input_file = []
+#     for i in range(0, len(enc_file_names)):
+#         dec_file = decrypt(enc_files[i], cf.SECRET_KEY)
+#         dec_file_data = base64.b64decode((dec_file.split('base64,')[-1]))
+#         if enc_file_names[i].startswith('~$'):
+#             pass
+#         else:
+#             org_input_file.append(enc_file_names[i])
+#             file = open(os.path.join(cf.Resumes_File_Path, enc_file_names[i]), 'wb')
+#             file.write(dec_file_data)
+#             file.close()
+#             files.append(file)
+ 
+#     mandatory_skills = ''
+#     secondary_skills = ''
+#     experience = ''
+#     resp, entry_time, exit_time = process_file(org_input_file, job_folder, jd_input, experience, mandatory_skills,
+#                                                secondary_skills)
+#     module_run_time = exit_time - entry_time
+#     overall_end_time = time.time() - start
+   
+#     if not resp.empty:
+#         resp['Total_exp_cal'] = ''
+#         resp['Total_Exp_With_Years_lst'] = ''
+#         for i in range(len(resp)):
+#             if type(resp['Total_Exp_With_Years'][i]) == "NA":
+#                 resp['Total_exp_cal'][i] = "NA"
+#             elif type(resp['Total_Exp_With_Years'][i]) == list:
+#                 resp['Total_exp_cal'][i] = resp['Total_Exp_With_Years'][i][0]
+#             else:
+#                 resp['Total_exp_cal'][i] = 'NA'
+ 
+#         filtered_results = []
+#         for result in resp.to_dict(orient='records'):
+#             filtered_result = {
+#                 "Candidate": result["Candidate"],
+#                 "Email": result["Email"],
+#                 "Exp_Years": result["Exp_Years"],
+#                 "Mobile": result["Mobile"],
+#                 "Total_exp_cal": result["Total_exp_cal"],
+#                 "Resume_skills": result["Resume_skills"]
+#             }
+#             filtered_results.append(filtered_result)
+ 
+#         for result_item in filtered_results:
+#             candidate_name = extract_candidate_name(result_item['Candidate'])
+#             result_item['Candidate'] = candidate_name
+           
+ 
+#         return {
+#             'overall_run_time': overall_end_time,
+#             'result': filtered_results
+#         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def get_skill_process(req_data):
+#     start = time.time()
+#     today = datetime.datetime.now()
+#     start_time = today.strftime("%m-%d-%Y %I:%M:%S %p")
+#     job_folder = 'file'
+#     jd_input = ''
+#     resume_folder = req_data["resume_folder"]
+
+#     enc_files = req_data['resfile']
+#     enc_file_names = resume_folder
+
+#     files = []
+#     org_input_file = []
+#     for i in range(0, len(enc_file_names)):
+#         dec_file = decrypt(enc_files[i], cf.SECRET_KEY)
+#         dec_file_data = base64.b64decode((dec_file.split('base64,')[-1]))
+#         # dec_file = decrypt(enc_files[i], cf.SECRET_KEY)
+#         # dec_file_data = base64.b64decode((enc_files[i].split('base64,')[-1]))
+#         if enc_file_names[i].startswith('~$'):
+#             pass
+#         else:
+#             org_input_file.append(enc_file_names[i])
+#             file = open(os.path.join(cf.Resumes_File_Path, enc_file_names[i]), 'wb')
+#             file.write(dec_file_data)
+#             file.close()
+#             files.append(file)
+#     mandatory_skills = ''
+#     secondary_skills = ''
+#     experience = ''
+#     resp, entry_time, exit_time = process_file(org_input_file, job_folder, jd_input, experience, mandatory_skills,
+#                                                secondary_skills)
+#     module_run_time = exit_time - entry_time
+#     overall_end_time = time.time() - start
+#     if not resp.empty:
+#         resp['Total_exp_cal'] = ''
+#         resp['Total_Exp_With_Years_lst'] = ''
+#         for i in range(len(resp)):
+
+#             if type(resp['Total_Exp_With_Years'][i]) == "NA":
+#                 resp['Total_exp_cal'][i] = "NA"
+
+#             elif type(resp['Total_Exp_With_Years'][i]) == list:
+#                 resp['Total_exp_cal'][i] = resp['Total_Exp_With_Years'][i][0]
+
+#             else:
+#                 print("........................entered into else condition")
+#                 resp['Total_exp_cal'][i] = 'NA'
+
+#         filtered_results = []
+#         for result in resp.to_dict(orient='records'):
+#             candidate_name = result["Candidate"]
+#             # Extracting candidate name using regular expressions
+#             candidate_name = extract_candidate_name(candidate_name)
+
+#             filtered_result = {
+#                 "Candidate": candidate_name,
+#                 "Email": result["Email"],
+#                 "Exp_Years": result["Exp_Years"],
+#                 "Mobile": result["Mobile"],
+#                 "Resume_skills": result["Resume_skills"],
+#                 "Total_exp_cal": result["Total_exp_cal"]
+#             }
+#             filtered_results.append(filtered_result)
+
+#         output_obj = {
+#             'overall_run_time': overall_end_time,
+#             'result': filtered_results
+#         }
+#         return output_obj
+
+# def extract_candidate_name(candidate_name):
+#     # Regular expression pattern to match candidate names
+#     pattern = r'([A-Za-z]+[A-Za-z ]*)'
+
+#     # Find all matches in the candidate name string
+#     matches = re.findall(pattern, candidate_name)
+
+#     # Join matches to form the extracted candidate name
+#     extracted_name = ''.join(matches)
+
+#     return extracted_name
+
+# Define your decrypt and process_file functions accordingly
+# Make sure to import necessary modules and define constants like cf.SECRET_KEY and cf.Resumes_File_Path
+
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+# def bg_process(req_data):
+#     start = time.time()
+#     today = datetime.datetime.now()
+#     start_time = today.strftime("%m-%d-%Y %I:%M:%S %p")
+#     job_folder = 'file'
+#     jd_input = ''
+#     resume_folder = req_data["resume_folder"]
+
+#     enc_files = req_data['resfile']
+#     enc_file_names = resume_folder
+
+#     files = []
+#     org_input_file = []
+#     for i in range(0, len(enc_file_names)):
+#         dec_file = decrypt(enc_files[i], cf.SECRET_KEY)
+#         dec_file_data = base64.b64decode((dec_file.split('base64,')[-1]))
+#         if enc_file_names[i].startswith('~$'):
+#             pass
+#         else:
+#             org_input_file.append(enc_file_names[i])
+#             file = open(os.path.join(cf.Resumes_File_Path, enc_file_names[i]), 'wb')
+#             file.write(dec_file_data)
+#             file.close()
+#             files.append(file)
+#     mandatory_skills = req_data['mandatory_skills']
+#     secondary_skills = req_data['secondary_skills']
+#     experience = req_data['experience']
+#     resp, entry_time, exit_time = process_file(org_input_file, job_folder, jd_input, experience, mandatory_skills, secondary_skills)
+#     module_run_time = exit_time - entry_time
+#     overall_end_time = time.time() - start
+#     if not resp.empty:
+#         resp['Total_exp_cal']=''
+#         resp['Total_Exp_With_Years_lst']=''
+#         for i in range(len(resp)):
+                
+#             if type(resp['Total_Exp_With_Years'][i]) == "NA":  
+#                 resp['Total_exp_cal'][i] = "NA"
+                    
+#             elif type(resp['Total_Exp_With_Years'][i]) == list:
+#                 resp['Total_exp_cal'][i] = resp['Total_Exp_With_Years'][i][0]
+                    
+#             else:
+#                 print("........................entered into else condition")
+#                 resp['Total_exp_cal'][i] = 'NA'
+
+
+#         if resp['JD_Mandatory_skills'][0] == '':
+#             jd_man_skill_count = 0
+#         else:
+#             jd_man_skill_count = len(resp['JD_Mandatory_skills'][0].split(','))
+#         if resp['JD_Secondary_skills'][0] == '':
+#             jd_sec_skill_count = 0
+#         else:
+#             jd_sec_skill_count = len(resp['JD_Secondary_skills'][0].split(','))
+#         resp['mandatory_skill_score'] = resp['Mandatory_Skills_Score'].apply(
+#             lambda x: str(int(round(x * jd_man_skill_count, 0))) + "/" + str(jd_man_skill_count))
+#         resp['secondary_skill_score'] = resp['Secondary_Skills_Score'].apply(
+#             lambda x: str(int(round(x * jd_sec_skill_count, 0))) + "/" + str(jd_sec_skill_count))
+#         resp['JD_Rel_Res_Skills'] = resp['JD_Rel_Res_Skills'].str.upper()
+#         resp['name'] = resp['Candidate']
+#         resp['exp_details'] = ""
+        
+#         output_obj = {
+#                         'overall_run_time' : overall_end_time,
+#                         'result':resp.to_dict(orient='records')
+#                     }
+#         return output_obj
+
+
+
+
+
+
+
+
+
+# def extract_candidate_name(filename):
+#     # Extract only the candidate name from the filename
+#     candidate_name = filename.split('_data_')[1].split('_')[0]  # Extracting the first part after _data_
+#     return candidate_name
+
+
+# def bg_process(req_data):
+#     start = time.time()
+#     today = datetime.datetime.now()
+#     start_time = today.strftime("%m-%d-%Y %I:%M:%S %p")
+#     job_folder = 'file'
+#     jd_input = ''
+#     resume_folders = req_data["resume_folder"]  # Change variable name to plural since it's a list now
+
+#     enc_files = req_data['resfile']
+#     enc_file_names = resume_folders  # Rename variable to plural as well
+
+#     files = []
+#     org_input_files = []
+#     for resume_folder in resume_folders:
+#         for i in range(0, len(enc_file_names)):
+#             dec_file = decrypt(enc_files[i], cf.SECRET_KEY)
+#             dec_file_data = base64.b64decode((dec_file.split('base64,')[-1]))
+#             if enc_file_names[i].startswith('~$'):
+#                 pass
+#             else:
+#                 org_input_files.append(enc_file_names[i])
+#                 file = open(os.path.join(cf.Resumes_File_Path, enc_file_names[i]), 'wb')
+#                 file.write(dec_file_data)
+#                 file.close()
+#                 files.append(file)
+#     mandatory_skills = req_data['mandatory_skills']
+#     secondary_skills = req_data['secondary_skills']
+#     experience = req_data['experience']
+#     resp, entry_time, exit_time = process_file(org_input_files, job_folder, jd_input, experience, mandatory_skills, secondary_skills)
+#     module_run_time = exit_time - entry_time
+#     overall_end_time = time.time() - start
+#     if not resp.empty:
+#         resp['Total_exp_cal'] = ''
+#         resp['Total_Exp_With_Years_lst'] = ''
+#         for i in range(len(resp)):
+#             if type(resp['Total_Exp_With_Years'][i]) == "NA":
+#                 resp['Total_exp_cal'][i] = "NA"
+#             elif type(resp['Total_Exp_With_Years'][i]) == list:
+#                 resp['Total_exp_cal'][i] = resp['Total_Exp_With_Years'][i][0]
+#             else:
+#                 print("........................entered into else condition")
+#                 resp['Total_exp_cal'][i] = 'NA'
+
+#         if resp['JD_Mandatory_skills'][0] == '':
+#             jd_man_skill_count = 0
+#         else:
+#             jd_man_skill_count = len(resp['JD_Mandatory_skills'][0].split(','))
+#         if resp['JD_Secondary_skills'][0] == '':
+#             jd_sec_skill_count = 0
+#         else:
+#             jd_sec_skill_count = len(resp['JD_Secondary_skills'][0].split(','))
+#         resp['mandatory_skill_score'] = resp['Mandatory_Skills_Score'].apply(
+#             lambda x: str(int(round(x * jd_man_skill_count, 0))) + "/" + str(jd_man_skill_count))
+#         resp['secondary_skill_score'] = resp['Secondary_Skills_Score'].apply(
+#             lambda x: str(int(round(x * jd_sec_skill_count, 0))) + "/" + str(jd_sec_skill_count))
+#         resp['JD_Rel_Res_Skills'] = resp['JD_Rel_Res_Skills'].str.upper()
+#         resp['exp_details'] = ""
+
+#         # Update the output object with the candidate names
+#         output_obj = {
+#             'overall_run_time': overall_end_time,
+#             'result': resp.to_dict(orient='records')
+#         }
+#         for result_item in output_obj['result']:
+#             candidate_name = extract_candidate_name(result_item['Candidate'])
+#             result_item['name'] = candidate_name
+
+#         return output_obj
+
+# Add the necessary imports and other functions used in your code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def extract_candidate_name(filename):
+#     # Extract only the candidate name from the filename
+#     candidate_name = filename.split('_data_')[1].split('_')[0]  # Extracting the first part after _data_
+#     return candidate_name
+
+# def bg_process(req_data):
+#     start = time.time()
+#     today = datetime.datetime.now()
+#     start_time = today.strftime("%m-%d-%Y %I:%M:%S %p")
+#     job_folder = 'file'
+#     jd_input = ''
+#     resume_folders = req_data["resume_folder"]  # Change variable name to plural since it's a list now
+
+#     enc_files = req_data['resfile']
+#     enc_file_names = resume_folders  # Rename variable to plural as well
+
+#     files = []
+#     org_input_files = []
+#     for resume_folder in resume_folders:
+#         for i in range(0, len(enc_file_names)):
+#             dec_file = decrypt(enc_files[i], cf.SECRET_KEY)
+#             dec_file_data = base64.b64decode((dec_file.split('base64,')[-1]))
+#             if enc_file_names[i].startswith('~$'):
+#                 pass
+#             else:
+#                 org_input_files.append(enc_file_names[i])
+#                 file = open(os.path.join(cf.Resumes_File_Path, enc_file_names[i]), 'wb')
+#                 file.write(dec_file_data)
+#                 file.close()
+#                 files.append(file)
+#     mandatory_skills = req_data['mandatory_skills']
+#     secondary_skills = req_data['secondary_skills']
+#     experience = req_data['experience']
+#     resp, entry_time, exit_time = process_file(org_input_files, job_folder, jd_input, experience, mandatory_skills, secondary_skills)
+#     module_run_time = exit_time - entry_time
+#     overall_end_time = time.time() - start
+#     if not resp.empty:
+#         resp['Total_exp_cal'] = ''
+#         resp['Total_Exp_With_Years_lst'] = ''
+#         for i in range(len(resp)):
+#             if type(resp['Total_Exp_With_Years'][i]) == "NA":
+#                 resp['Total_exp_cal'][i] = "NA"
+#             elif type(resp['Total_Exp_With_Years'][i]) == list:
+#                 resp['Total_exp_cal'][i] = resp['Total_Exp_With_Years'][i][0]
+#             else:
+#                 print("........................entered into else condition")
+#                 resp['Total_exp_cal'][i] = 'NA'
+
+#         if resp['JD_Mandatory_skills'][0] == '':
+#             jd_man_skill_count = 0
+#         else:
+#             jd_man_skill_count = len(resp['JD_Mandatory_skills'][0].split(','))
+#         if resp['JD_Secondary_skills'][0] == '':
+#             jd_sec_skill_count = 0
+#         else:
+#             jd_sec_skill_count = len(resp['JD_Secondary_skills'][0].split(','))
+#         resp['mandatory_skill_score'] = resp['Mandatory_Skills_Score'].apply(
+#             lambda x: str(int(round(x * jd_man_skill_count, 0))) + "/" + str(jd_man_skill_count))
+#         resp['secondary_skill_score'] = resp['Secondary_Skills_Score'].apply(
+#             lambda x: str(int(round(x * jd_sec_skill_count, 0))) + "/" + str(jd_sec_skill_count))
+#         resp['JD_Rel_Res_Skills'] = resp['JD_Rel_Res_Skills'].str.upper()
+#         resp['exp_details'] = ""
+
+#         # Update the output object with the candidate names
+#         output_obj = {
+#             'overall_run_time': overall_end_time,
+#             'result': resp.to_dict(orient='records')
+#         }
+#         for result_item in output_obj['result']:
+#             candidate_name = extract_candidate_name(result_item['Candidate'])
+#             result_item['Candidate'] = candidate_name
+
+#         return output_obj
+
+
+
+
+
+
+# def bg_process(req_data):
+#     start = time.time()
+#     today = datetime.datetime.now()
+#     start_time = today.strftime("%m-%d-%Y %I:%M:%S %p")
+#     job_folder = 'file'
+#     jd_input = ''
+#     resume_folder = req_data["resume_folder"]
+    
+  
+
+#     enc_files = req_data['resfile']
+#     enc_file_names = resume_folder
+
+#     files = []
+#     org_input_file = []
+#     for i in range(0, len(enc_file_names)):
+#         dec_file = decrypt(enc_files[i], cf.SECRET_KEY)
+#         dec_file_data = base64.b64decode((dec_file.split('base64,')[-1]))
+#         if enc_file_names[i].startswith('~$'):
+#             pass
+#         else:
+#             org_input_file.append(enc_file_names[i])
+#             file = open(os.path.join(cf.Resumes_File_Path, enc_file_names[i]), 'wb')
+#             file.write(dec_file_data)
+#             file.close()
+#             files.append(file)
+#     mandatory_skills = req_data['mandatory_skills']
+#     secondary_skills = req_data['secondary_skills']
+#     experience = req_data['experience']
+#     resp, entry_time, exit_time = process_file(org_input_file, job_folder, jd_input, experience, mandatory_skills, secondary_skills)
+#     module_run_time = exit_time - entry_time
+#     overall_end_time = time.time() - start
+#     if not resp.empty:
+#         resp['Total_exp_cal'] = ''
+#         resp['Total_Exp_With_Years_lst'] = ''
+#         for i in range(len(resp)):
+#             if type(resp['Total_Exp_With_Years'][i]) == "NA":  
+#                 resp['Total_exp_cal'][i] = "NA"
+#             elif type(resp['Total_Exp_With_Years'][i]) == list:
+#                 resp['Total_exp_cal'][i] = resp['Total_Exp_With_Years'][i][0]
+#             else:
+#                 print("........................entered into else condition")
+#                 resp['Total_exp_cal'][i] = 'NA'
+
+#         if resp['JD_Mandatory_skills'][0] == '':
+#             jd_man_skill_count = 0
+#         else:
+#             jd_man_skill_count = len(resp['JD_Mandatory_skills'][0].split(','))
+#         if resp['JD_Secondary_skills'][0] == '':
+#             jd_sec_skill_count = 0
+#         else:
+#             jd_sec_skill_count = len(resp['JD_Secondary_skills'][0].split(','))
+#         resp['mandatory_skill_score'] = resp['Mandatory_Skills_Score'].apply(
+#             lambda x: str(int(round(x * jd_man_skill_count, 0))) + "/" + str(jd_man_skill_count))
+#         resp['secondary_skill_score'] = resp['Secondary_Skills_Score'].apply(
+#             lambda x: str(int(round(x * jd_sec_skill_count, 0))) + "/" + str(jd_sec_skill_count))
+#         resp['JD_Rel_Res_Skills'] = resp['JD_Rel_Res_Skills'].str.upper()
+        
+       
+#         resp['exp_details'] = ""
+        
+#         output_obj = {
+#             'overall_run_time': overall_end_time,
+#             'result': resp.to_dict(orient='records')
+#         }
+        
+#         return output_obj
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import os
+# import base64
+# import datetime
+# import time
+
+# def extract_candidate_name(candidate_name):
+#     candidate_name = os.path.splitext(candidate_name.split('[')[0].split('_')[-1])[0]
+#     return candidate_name
+
+# def bg_process(req_data):
+#     start = time.time()
+#     today = datetime.datetime.now()
+#     start_time = today.strftime("%m-%d-%Y %I:%M:%S %p")
+#     job_folder = 'file'
+#     jd_input = ''
+#     resume_folder = req_data["resume_folder"]
+
+#     enc_files = req_data['resfile']
+#     enc_file_names = resume_folder
+
+#     files = []
+#     org_input_file = []
+#     for i in range(0, len(enc_file_names)):
+#         dec_file = decrypt(enc_files[i], cf.SECRET_KEY)
+#         dec_file_data = base64.b64decode((dec_file.split('base64,')[-1]))
+#         if enc_file_names[i].startswith('~$'):
+#             pass
+#         else:
+#             org_input_file.append(enc_file_names[i])
+#             file = open(os.path.join(cf.Resumes_File_Path, enc_file_names[i]), 'wb')
+#             file.write(dec_file_data)
+#             file.close()
+#             files.append(file)
+#     mandatory_skills = req_data['mandatory_skills']
+#     secondary_skills = req_data['secondary_skills']
+#     experience = req_data['experience']
+#     resp, entry_time, exit_time = process_file(org_input_file, job_folder, jd_input, experience, mandatory_skills, secondary_skills)
+#     module_run_time = exit_time - entry_time
+#     overall_end_time = time.time() - start
+#     if not resp.empty:
+#         resp['Total_exp_cal'] = ''
+#         resp['Total_Exp_With_Years_lst'] = ''
+#         for i in range(len(resp)):
+#             if type(resp['Total_Exp_With_Years'][i]) == "NA":  
+#                 resp['Total_exp_cal'][i] = "NA"
+#             elif type(resp['Total_Exp_With_Years'][i]) == list:
+#                 resp['Total_exp_cal'][i] = resp['Total_Exp_With_Years'][i][0]
+#             else:
+#                 print("........................entered into else condition")
+#                 resp['Total_exp_cal'][i] = 'NA'
+
+#         if resp['JD_Mandatory_skills'][0] == '':
+#             jd_man_skill_count = 0
+#         else:
+#             jd_man_skill_count = len(resp['JD_Mandatory_skills'][0].split(','))
+#         if resp['JD_Secondary_skills'][0] == '':
+#             jd_sec_skill_count = 0
+#         else:
+#             jd_sec_skill_count = len(resp['JD_Secondary_skills'][0].split(','))
+#         resp['mandatory_skill_score'] = resp['Mandatory_Skills_Score'].apply(
+#             lambda x: str(int(round(x * jd_man_skill_count, 0))) + "/" + str(jd_man_skill_count))
+#         resp['secondary_skill_score'] = resp['Secondary_Skills_Score'].apply(
+#             lambda x: str(int(round(x * jd_sec_skill_count, 0))) + "/" + str(jd_sec_skill_count))
+#         resp['JD_Rel_Res_Skills'] = resp['JD_Rel_Res_Skills'].str.upper()
+        
+#         resp['Candidate'] = resp['Candidate'].apply(extract_candidate_name)
+#         resp['name'] = resp['Candidate'] 
+
+#         resp['exp_details'] = ""
+        
+#         output_obj = {
+#             'overall_run_time': overall_end_time,
+#             'result': resp.to_dict(orient='records')
+#         }
+#         return output_obj
+
+
+
+
+

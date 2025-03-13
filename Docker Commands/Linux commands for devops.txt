@@ -1,0 +1,62 @@
+Linux commands for devops:
+
+1. change the directory for normal to d-drive.
+		cd /mnt/d
+
+2.change the directory for normal to c-drive.
+		cd /mnt/c
+
+3.change the slash to ~ is 
+		cd ~ 
+
+4.ls command is used to list files or directories in Linux. It will showing the list of files in that drive.
+		ls
+
+5. man stands for manual
+		man <command name>
+
+6.clear the ubuntu command name is 
+		clear and enter
+
+7.pwd stands for present working directory 
+		pwd
+
+8.cd stands for change directory
+		cd /<directory name>
+
+9.echo is use to print the any data 
+		echo "hello world"
+output: hello world
+
+10.whoami is a command that is who is the current user of these ubuntu 
+		whoami
+
+11.sudo bash is a command used for the root user of the ubuntu 
+		sudo bash     and  provide the password of the current user it will display the root user 
+return back to  the current user name enter the command of 
+
+		su abhi 
+12.sudo useradd abhi12 is a commmand to create the new user in the ubuntu 
+		sudo useradd abhi12
+
+13.sudo passwd abhi12  is a command to create the password to the user 
+		sudo passwd abhi12     it should be created successfully 
+
+
+Operator	Description
+-eq	is equal to
+-ne	is not equal to
+-gt	is greater than
+-ge	is greater than or equal to
+-lt	is less than
+-le	is less than or equal to
+
+
+Operator	Description
+==	is equal to
+!=	is not equal to
+\<	is less than, in ASCII alphabetical order
+\>	is greater than, in ASCII alphabetical order
+
+
+	

@@ -1,0 +1,81 @@
+DOCKER COMMANDS 
+
+1.docker build -t <docker_name> .     -----------     docker image  implemented at spcified docker field
+
+2. docker run -p 8000:8000 --name my-api <docker_name>  -----  docker run that container using that port 
+
+3. docker run -d -p 8000:1028738 <docker_image_name>   -------  docker run command. there is the 8000 is port we have to change any one in that port place.
+
+ 
+-----------------------------------------------------------------------------------------------------------------------------------------------------   DOCKER IMAGES SEND TO ECR SERVER IN AWS-------------------------------------
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 122271115202.dkr.ecr.us-east-1.amazonaws.com
+
+aws ecr get-login-password --region <your-region> | docker login --username AWS --password-stdin <your-account-id>.dkr.ecr.<your-region>.amazonaws.com
+
+
+docker build -t <your-image-name>:<your-tag> .
+
+docker build -t helloworld:api .
+
+
+
+docker tag <your-image-name>:<your-tag> <your-account-id>.dkr.ecr.<your-region>.amazonaws.com/<your-ecr-repository-name>:<your-tag>
+
+docker tag helloworld:api 122271115202.dkr.ecr.us-east-1.amazonaws.com/ecr-docker-images:api
+
+docker push <your-account-id>.dkr.ecr.<your-region>.amazonaws.com/<your-ecr-repository-name>:<your-tag>
+
+docker push 122271115202.dkr.ecr.us-east-1.amazonaws.com/ecr-docker-images:api
+
+
+docker run -d -p 80:8000 ecr_docker
+
+
+
+                             DOCKER image push to the DOCKER HUB                            DOCKERHUB
+											USERNAME : abhisuda201
+											PASSWORD : Abhi@7671
+											
+1. docker login 
+
+2. docker tag <repo_name:tag_name> docker_hub_user_name/<repo_name:tag_name>
+
+3.docker push docker_hub_user_name/<repo_name:tag_name>
+
+docker images pushed to the docker hub 
+
+
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 					KUBERNETES COMPLETE DETAILS
+
+Kubernetes: Open source container orchestration tool it was developed by the google.It will helps to manage the containerized applications 1000's in different deployment environments.
+
+
+FEATURES OF KUBERNETES:
+1.High availability: no downtime or no server issues.
+2.Scalability: High performance.
+3.Disaster recovery: backup and restore the images data.
+ 
+
+
+
+
+
+
+
+
+
+
+
+                                     TERRAFORM COMPLETE DETAILS 
+
+DEF:Terraform is an infrastructure as code (IaC) tool that allow you to build, change and version infrastructure safely and efficiently.
+
+
+
+
+
+
+
+
