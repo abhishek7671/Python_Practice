@@ -1,0 +1,437 @@
+1. What is Django, and what are its main features?
+
+
+Django Overview:
+Django is a high-level Python web framework that promotes rapid development and clean, pragmatic design. It follows the "Don't Repeat Yourself" (DRY) principle and emphasizes reusability, modularity, and security.
+
+Main Features of Django:
+MVT (Model-View-Template) Architecture – A structured way to build web applications, separating data management, business logic, and presentation.
+
+ORM (Object-Relational Mapping) – Django’s built-in ORM allows interaction with the database using Python instead of SQL.
+
+Admin Interface – Automatically generated admin panel to manage database models.
+
+Security – Django has built-in protection against SQL injection, CSRF, XSS, and clickjacking.
+
+Scalability – Used by large websites like Instagram and Pinterest.
+
+Built-in Authentication – Provides user authentication, including login, logout, and session management.
+
+Middleware Support – Allows request and response processing at different stages.
+
+Templating Engine – Built-in templating system to render dynamic content.
+
+URL Routing – Allows mapping of URLs to specific views.
+
+Cachability – Built-in caching framework for performance optimization.
+
+
+
+
+2. What is Django ORM? How is it different from SQLAlchemy?
+Django ORM (Object-Relational Mapping):
+Django ORM is an abstraction layer that allows developers to interact with databases using Python code instead of raw SQL queries. It translates high-level model definitions into SQL statements.
+
+Differences between Django ORM and SQLAlchemy:
+Feature                   Django ORM	                                                          SQLAlchemy
+Approach	            Uses a declarative approach for defining models	                     Uses both declarative and imperative approaches
+Flexibility	          Tightly integrated with Django	                                     More flexible and can be used independently
+Query Construction	  Simple and high-level abstraction	                                   More control over query construction
+Eager vs. Lazy Loading	Supports automatic lazy loading	                                   Explicitly supports eager and lazy loading
+Database Support	      Limited customization for multiple DBs	                           More powerful multi-database support
+
+
+Django ORM is simpler and easier for Django applications, whereas SQLAlchemy offers greater flexibility and fine-grained control.
+
+3. Explain Django's MVT architecture.
+
+
+MVT (Model-View-Template) Architecture:
+MVT is Django’s implementation of the MVC (Model-View-Controller) pattern, where:
+
+Model (M): Represents the database and data structure.
+View (V): Handles business logic and processes requests.
+Template (T): Defines how the data is presented to the user.
+
+
+Flow of MVT Architecture:
+User requests a URL → The request is processed by Django’s URL dispatcher.
+View processes the request → Fetches data from the database via Models.
+Template renders the response → View sends the data to the Template for rendering.
+Response is returned to the user → The final HTML is sent to the browser.
+
+
+
+4. What are Django models? How do you define a model?
+Django Models:
+Django models are Python classes that define the structure of the database table. Each model maps to a database table and contains fields representing the table columns.
+
+
+from django.db import models
+
+class Employee(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+    email = models.EmailField(unique=True)
+    hire_date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
+Key Model Features:
+Each field in the model corresponds to a database column.
+Django automatically creates SQL tables from models.
+Models support relationships using ForeignKey, OneToOneField, and ManyToManyField.
+
+
+5. How does Django handle database migrations?
+Django uses a migration system to track and apply database schema changes.
+Steps in Django Migrations:
+
+Create migrations after model changes:
+python manage.py makemigrations
+
+Apply migrations to the database:
+python manage.py migrate
+
+Check applied migrations:
+python manage.py showmigrations
+
+Benefits of Django Migrations:
+Tracks database changes over time.
+Allows version control of schema.
+Supports multiple databases.
+
+6. What is the difference between ForeignKey, OneToOneField, and ManyToManyField?
+Field Type	        Relationship           Type	Example
+ForeignKey	        Many-to-One	One        Employee belongs to One Department, but a Department can have many Employees.
+OneToOneField	      One-to-One	           One User has one Profile.
+ManyToManyField	    Many-to-Many	         One Student can enroll in multiple Courses, and one Course can have multiple Students.
+
+class Department(models.Model):
+    name = models.CharField(max_length=100)
+
+class Employee(models.Model):
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)  # Many-to-One
+    profile = models.OneToOneField('Profile', on_delete=models.CASCADE)  # One-to-One
+    skills = models.ManyToManyField('Skill')  # Many-to-Many
+
+
+7. What are Django signals? How are they used?
+Django Signals:
+Django signals allow decoupled components to communicate and execute code when specific events occur.
+
+Common Use Cases:
+Auto-creating a profile when a user is created.
+Sending notifications when an event occurs.
+
+
+
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.contrib.auth.models import User
+from .models import Profile
+
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+
+Here, a Profile is automatically created when a new User is registered.
+
+
+
+8. How does Django handle authentication and authorization?
+Django provides built-in authentication and authorization mechanisms.
+
+Authentication (User Management):
+django.contrib.auth provides user authentication.
+Supports login/logout, password hashing, and session management.
+
+Authorization (Permissions & Groups):
+Permissions can be set at the model and view levels.
+Groups allow managing multiple users with the same permissions.
+
+
+from django.contrib.auth.models import User
+
+user = User.objects.create_user(username='john', password='secret123')
+user.is_staff = True  # Grants admin access
+user.save()
+
+
+9. What is middleware in Django? Can you name some built-in middlewares?
+Middleware in Django:
+Middleware is a framework that processes requests and responses globally before they reach the view.
+
+Built-in Middlewares:
+SecurityMiddleware – Protects against security vulnerabilities.
+SessionMiddleware – Enables session support.
+AuthenticationMiddleware – Manages user authentication.
+CSRF Middleware – Protects against CSRF attacks.
+CommonMiddleware – Provides various utilities like URL rewriting.
+
+Middleware is configured in settings.py under MIDDLEWARE.
+
+
+10. Explain the role of settings.py in a Django project.
+Role of settings.py:
+Configures Django’s behavior, including:
+Database settings
+Installed apps
+Middleware
+Static and media files
+Security settings
+Authentication backends
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydatabase',
+        'USER': 'myuser',
+        'PASSWORD': 'mypassword',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
+
+
+1. How do you optimize database queries in Django?
+Optimizing database queries in Django is essential for performance and scalability. Here are several techniques:
+
+Techniques for Query Optimization:
+Use select_related and prefetch_related
+Reduces the number of database queries when dealing with relationships.
+select_related: Uses SQL JOIN for foreign key relationships.
+prefetch_related: Uses additional queries for many-to-many relationships.
+
+
+
+Example of inefficient query:
+
+employees = Employee.objects.all()
+for emp in employees:
+    print(emp.department.name)  # Causes multiple queries
+
+
+Optimized version:
+
+employees = Employee.objects.select_related('department')
+Use only() and defer()
+
+Fetch only necessary fields to reduce memory usage.
+
+Employee.objects.only("name", "email")  # Fetch only name and email
+Employee.objects.defer("profile_picture")  # Fetch all except profile_picture
+Indexing Fields
+
+Use indexes on fields that are frequently queried.
+
+class Employee(models.Model):
+    email = models.EmailField(unique=True, db_index=True)
+Use values() and values_list() for large datasets
+
+Instead of fetching full objects, fetch only needed fields:
+
+Employee.objects.values('id', 'name')  # Returns dict
+Employee.objects.values_list('id', 'name', flat=True)  # Returns tuple
+Use Database Transactions (atomic)
+
+Prevents unnecessary database writes.
+
+from django.db import transaction
+
+with transaction.atomic():
+    emp = Employee.objects.get(id=1)
+    emp.salary = 60000
+    emp.save()
+Use Caching
+
+Store query results in cache instead of hitting the database every time.
+
+
+
+2. What is the difference between select_related and prefetch_related?
+
+Feature	select_related	prefetch_related
+Use Case	              Many-to-One (ForeignKey)	                Many-to-Many (ManyToManyField)
+Query Execution	        Uses SQL JOIN	                            Executes multiple queries
+Performance	            Faster for One-to-One and ForeignKey	    Faster for Many-to-Many
+Example	                .select_related('department')	            .prefetch_related('projects')
+
+Example Usage:
+
+employees = Employee.objects.select_related('department')  # ForeignKey (efficient JOIN)
+employees = Employee.objects.prefetch_related('skills')  # ManyToMany (efficient batch queries)
+
+
+3. How does Django handle caching?
+Django supports caching to improve performance and reduce database load.
+
+Types of Caching in Django:
+File-based caching – Stores cache in files.
+Database caching – Uses the database as a cache.
+Memory caching – Uses in-memory storage like Redis or Memcached.
+Per-view caching – Caches specific views.
+Template caching – Caches templates.
+
+Example Using Redis Cache:
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+    }
+}
+
+
+4. What are class-based views (CBVs), and how are they different from function-based views (FBVs)?
+
+
+Feature	              Function-Based Views (FBVs)	                  Class-Based Views (CBVs)
+Implementation	      Uses functions	                              Uses classes
+Reusability	          Less reusable	                                More reusable and extendable
+Readability	          Simple and explicit	                          More structured
+Example	              def my_view(request):                         ...	class MyView(View): ...
+
+Example of FBV:
+
+def employee_list(request):
+    employees = Employee.objects.all()
+    return render(request, "employees.html", {"employees": employees})
+
+Example of CBV:
+
+from django.views import View
+
+class EmployeeListView(View):
+    def get(self, request):
+        employees = Employee.objects.all()
+        return render(request, "employees.html", {"employees": employees})
+
+
+5. How can you deploy a Django application?
+Steps to Deploy a Django App:
+Set Up a Virtual Environment
+
+python -m venv venv
+source venv/bin/activate
+
+Install Dependencies
+
+pip install -r requirements.txt
+
+Configure ALLOWED_HOSTS and DEBUG=False in settings.py
+
+ALLOWED_HOSTS = ["yourdomain.com"]
+DEBUG = False
+
+Use Gunicorn as the WSGI Server
+
+pip install gunicorn
+gunicorn --workers 3 project_name.wsgi
+
+Set Up Nginx/Apache for Reverse Proxy
+
+Use PostgreSQL for Production
+
+Enable HTTPS using Let’s Encrypt
+
+Configure a Process Manager like Supervisor or Systemd
+
+Run Migrations & Collect Static Files
+
+python manage.py migrate
+python manage.py collectstatic
+
+
+6. What is Django Rest Framework (DRF)? Why is it used?
+Django Rest Framework (DRF) is a powerful toolkit for building REST APIs in Django.
+
+Why use DRF?
+Provides serialization and authentication.
+Built-in support for pagination, permissions, and throttling.
+Supports both class-based views (CBVs) and viewsets.
+
+Example API using DRF:
+
+from rest_framework import serializers, viewsets
+from .models import Employee
+
+class EmployeeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Employee
+        fields = '__all__'
+
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer
+
+
+7. How do you implement JWT authentication in Django?
+Steps to Implement JWT Authentication:
+Install djangorestframework_simplejwt:
+
+pip install djangorestframework_simplejwt
+Add to settings.py:
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+Generate JWT tokens:
+
+from rest_framework_simplejwt.tokens import RefreshToken
+
+def get_tokens_for_user(user):
+    refresh = RefreshToken.for_user(user)
+    return {"refresh": str(refresh), "access": str(refresh.access_token)}\
+
+
+8. How do you handle file uploads in Django?
+Steps for Handling File Uploads:
+Define a Model:
+
+class Document(models.Model):
+    file = models.FileField(upload_to='uploads/')
+Create a Form:
+
+from django import forms
+from .models import Document
+
+class DocumentForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        fields = ['file']
+Configure MEDIA_URL and MEDIA_ROOT in settings.py:
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+9. How does Django manage sessions?
+Uses database-backed sessions by default (django.contrib.sessions).
+
+Supports file-based, cached, or cookie-based sessions.
+
+Session Example:
+
+request.session['username'] = 'JohnDoe'
+username = request.session.get('username', 'Guest')
+
+
+10. What are querysets and managers in Django?
+QuerySet: Represents a collection of database records.
+Manager: Provides the API for database queries.
+
+Example:
+
+employees = Employee.objects.filter(department="HR")  # QuerySet
+
