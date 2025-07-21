@@ -1,0 +1,393 @@
+# Intersection of 2 lists
+
+l1 = [1,2,3,4]
+l2 = [3,4,5,6]
+
+d = []
+
+for i in l1:
+    for j in l2:
+        if i == j and i not in d:
+            d.append(i)
+print(d)
+
+
+
+# decorator code
+
+def data_demo(func):
+    def wrapper(a,b):
+        result = func(a,b)
+        return result
+    return wrapper
+
+
+@data_demo
+def data(x,y):
+    return x+y
+
+print(data(3,5))
+
+
+
+# reverse the string
+
+s = "hello"
+data = ""
+for i in s:
+    data = i + data
+print(data)
+
+
+
+# find the number prime or not 
+
+n =27
+if n <= 1:
+    print('Not Prime')
+else:
+    is_prime = True
+
+    for i in range(2,n):
+        if n % i == 0:
+            is_prime = False
+            break
+    if is_prime:
+        print('Prime Number')
+    else:
+        print('Not Prime')
+
+
+# max values in list
+
+r = [3, 7, 2, 9, 4]
+max = r[0]
+for i in range(1,len(r)):
+    if r[i] > max:
+        max = r[i]
+        
+print(max)
+
+
+
+# Fibonacci value of that number 
+
+n = 5
+data = 1
+
+while n > 0:
+    data = data * n
+    n -= 1
+print(data)
+
+
+
+# palindrome or not
+
+s = "data"
+i = 0
+j = len(s) -1
+is_palindrome = True
+while i < j:
+    if s[i] != s[j]:
+        is_palindrome = False
+        break
+    i += 1
+    j -= 1
+if is_palindrome:
+    print('Palindrome')
+else:
+    print('Not Palindrome')
+
+
+
+# sum of all in string
+
+n = input('enter the numbers: ')
+sum = 0
+for i in str(n):
+    sum = sum + int(i)
+print(sum)
+
+
+
+
+# count frequency of each character and find the first non repeating character in string
+
+s= "aabbccddefg"
+
+d = {}
+
+for i in s:
+    if i not in d:
+        d[i] = 1
+    else:
+        d[i] += 1
+    
+for j in s:
+    if d[j] == 1:
+        print(j)
+        break
+    
+    
+# target problem 
+
+arr = [1, 3, 2, 2, 4]
+target = 4
+
+for i in range(len(arr)):
+    for j in range(i+1, len(arr)):
+        if arr[i] + arr[j] == target:
+            print(arr[i], arr[j])
+            
+            
+          
+# second highest values identify
+
+arr = [10, 20, 5, 8, 30]
+
+max1 = arr[0]
+max2 = arr[0]
+           
+for i in range(1, len(arr)):
+    if arr[i] > max1:
+        max2 = max1
+        max1 = arr[i]
+    elif arr[i] > max2 and arr[i] != max1:
+        max2 = arr[i]
+print(max2)
+
+
+            
+
+
+
+
+data = ["data","date","day"]
+prefix = data[0]
+for i in data[1:]:
+    while not i.startswith(prefix):
+        prefix = prefix[:-1]
+        if not prefix:
+            print("empty")
+print(prefix)
+
+
+
+
+nested = [[1, 2], [3, 4, [7, 8, 9, [10, 11, 12], 13]], [5, 6]]
+flat = []
+
+def flatten(lst):
+    for item in lst:
+        if isinstance(item, list):
+            flatten(item)
+        else:
+            flat.append(item)
+
+flatten(nested)
+print(flat)
+
+
+s = "abc"
+permutations = []
+
+for i in range(0, len(s)):
+    for j in range(0, len(s)):
+        for k in range(0, len(s)):
+            if i != j and j != k and i != k:
+                temp = s[i] + s[j] + s[k]
+                permutations += [temp]
+
+print("Permutations of 'abc':")
+for p in permutations:
+    print(p)
+    
+    
+    
+
+nums = [1, 2, 3]
+permutations = []
+
+for i in range(len(nums)):
+    for j in range(len(nums)):
+        for k in range(len(nums)):
+            if i != j and j != k and i != k:
+                permutations += [[nums[i], nums[j], nums[k]]]
+
+print("Permutations:")
+for p in permutations:
+    print(p)
+
+
+
+
+# combinations code
+
+
+s = "abc"
+n = len(s)
+
+for i in range(n):
+    for j in range(i + 1, n):
+        print(s[i] + s[j])
+
+
+lst = [1, 2, 3, 4]
+n = len(lst)
+
+for i in range(n):
+    for j in range(i + 1, n):
+        for k in range(j + 1, n):
+            print([lst[i], lst[j], lst[k]])
+
+
+
+
+l = [5,11,7,1,3,2] 
+data = [l [i] for i in range(1, len(l)) if l[i]> l[i-1]]
+print(data)
+l = [11,7,3,2] and its sum 
+
+def get_odd_substring(s):
+    odd_digits = "13579"
+    odd = ""
+    for i in s:
+        if i in odd_digits:
+            odd += i
+    return odd
+
+s1="540"
+s2="5432108"
+odd_s1 = get_odd_substring(s1)
+odd_s2 = get_odd_substring(s2)
+print(odd_s1)
+print(odd_s2)
+
+
+def missing_letter(l):
+    for i in range(len(l) - 1):
+        if l[i+1] -l[i] != 1:
+            return l[i] +1
+    return None
+
+l =[2,3,4,5,6,7]
+missing = missing_letter(l)
+print(missing)
+
+
+
+
+
+
+
+
+
+
+
+
+l = [3,5,11,7,5,3]
+data = [l [i] for i in range(1, len(l)) if l[i]> l[i-1]]
+print(data)
+
+
+
+
+
+
+1.Find second highest number from list without using inbuilt functions
+2. Explain the logic of a program to reverse a given string word by word without using any built-in functions.
+3. problem that can be solved using recursion?
+
+
+
+
+More Problem Types by DSA Topic
+
+
+📚 Arrays & Strings
+Kadane’s Algorithm – Maximum subarray sum.
+Dutch National Flag Problem – Sort 0s, 1s, and 2s.
+Rotate array by K steps
+Move all zeros to the end
+Check if two strings are anagrams
+Longest substring without repeating characters
+
+
+🔁 Sliding Window & Two Pointers
+Minimum window substring
+Maximum sum subarray of size K
+Longest subarray with sum K
+Container with most water
+Valid palindrome with at most one deletion
+
+
+
+🔁 Recursion & Backtracking
+N-Queens problem
+Sudoku solver
+Word search in grid
+Generate all subsets of a set
+Letter case permutation
+
+
+
+📊 Hashing / Dictionaries / Sets
+Find duplicate in array
+Longest consecutive sequence
+Group anagrams
+Top K frequent element
+Find common elements in three arrays
+
+
+
+🌲 Trees & Binary Trees
+Level order traversal (BFS)
+Lowest Common Ancestor (LCA)
+Invert binary tree
+Check if tree is balanced
+Serialize and deserialize binary tree
+
+
+
+🔗 Linked Lists
+Detect and remove cycle in linked list
+Reverse a linked list
+Add two numbers represented by linked lists
+Merge K sorted linked lists
+Find intersection node of two linked lists
+
+
+
+🧮 Dynamic Programming
+0/1 Knapsack Problem
+Coin Change (min and total ways)
+Longest Increasing Subsequence
+Edit Distance
+House Robber Problem
+
+
+
+🗺️ Graphs
+Detect cycle in undirected/ directed graph
+Clone a graph
+Dijkstra’s algorithm
+Topological sort
+Number of islands
+
+
+🧠 Bit Manipulation
+Single number in array (where all others appear twice)
+Count set bits
+Find missing number using XOR
+Power of Two
+Swap even and odd bits
+
+
+
+🧩 Math / Logic
+GCD and LCM
+Armstrong number
+Factorial trailing zeroes
+Excel column title to number
+Number of digits in factorial
